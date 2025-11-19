@@ -1,0 +1,1410 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <title>LF DESIGN - Soluções Digitais</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0A0A0A;
+            --bg-panel: #111111;
+            --text-light: #FFFFFF;
+            --text-gray: #B0B0B0;
+            --text-dark: #1A1A1A;
+            --accent-cyan: #00FFFF;
+            --accent-teal: #008080;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #00FFFF 0%, #008080 100%);
+            --border-gradient: linear-gradient(to right, #00FFFF, #008080);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            width: 1920px;
+            max-width: 1920px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(30deg, #151515 12%, transparent 12.5%, transparent 87%, #151515 87.5%, #151515),
+                linear-gradient(150deg, #151515 12%, transparent 12.5%, transparent 87%, #151515 87.5%, #151515),
+                linear-gradient(30deg, #151515 12%, transparent 12.5%, transparent 87%, #151515 87.5%, #151515),
+                linear-gradient(150deg, #151515 12%, transparent 12.5%, transparent 87%, #151515 87.5%, #151515),
+                linear-gradient(60deg, #111111 25%, transparent 25.5%, transparent 75%, #111111 75%, #111111),
+                linear-gradient(60deg, #111111 25%, transparent 25.5%, transparent 75%, #111111 75%, #111111);
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        }
+
+        /* Container Utility */
+        .container {
+            width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography Utils */
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-gray);
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--white);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 28px;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+        }
+
+        .hero-title {
+            font-size: 80px;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #B0B0B0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 24px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* About Section */
+        #sobre {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        /* Services Section */
+        #servicos {
+            padding: 100px 0;
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .service-card {
+            background: #111;
+            padding: 50px 40px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            background: #161616;
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--accent-cyan);
+            margin-bottom: 30px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .service-benefits {
+            list-style: none;
+        }
+
+        .service-benefits li {
+            margin-bottom: 10px;
+            color: #ccc;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-benefits li i {
+            color: var(--accent-cyan);
+        }
+
+        /* Pricing Section - Crucial Part */
+        #precos {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .pricing-main-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .pricing-category-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            color: var(--text-dark);
+            /* Gradient border trick */
+            box-shadow: 0 0 0 4px transparent;
+            background-image: linear-gradient(var(--white), var(--white)), var(--gradient-primary);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            border: 4px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-icon {
+            font-size: 40px;
+            color: var(--accent-teal);
+            margin-bottom: 15px;
+        }
+
+        .pricing-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .pricing-range {
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .tier-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .tier-item {
+            background: #F8F9FA;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #E0E0E0;
+            transition: transform 0.2s;
+        }
+
+        .tier-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-teal);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .tier-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .tier-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .tier-features {
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .tier-features div {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            background: #25D366;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* Portfolio */
+        #portfolio {
+            padding: 100px 0;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 10px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            color: #000;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-cat {
+            color: var(--accent-cyan);
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .project-title {
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* Testimonials */
+        #depoimentos {
+            padding: 100px 0;
+            background: rgba(20, 20, 20, 0.5);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #181818;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .quote-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #CCC;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #333;
+            object-fit: cover;
+        }
+
+        .client-details h4 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .client-details span {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* FAQ */
+        #faq {
+            padding: 100px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .faq-item[open] {
+            border-color: var(--accent-teal);
+        }
+
+        .faq-summary {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .faq-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-summary::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--accent-cyan);
+            transition: transform 0.3s;
+        }
+
+        .faq-item[open] .faq-summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-content {
+            padding: 0 30px 30px 30px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        /* Contact */
+        #contato {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, rgba(10,10,10,0), rgba(0,255,255,0.05));
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #222;
+        }
+
+        .contact-form-box {
+            padding: 50px;
+        }
+
+        .contact-info-box {
+            background: #1A1A1A;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #0A0A0A;
+            border: 1px solid #333;
+            padding: 15px;
+            color: var(--white);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300FFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px top 50%;
+            background-size: 12px auto;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-text h5 {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .info-text p, .info-text a {
+            color: var(--text-gray);
+            font-size: 15px;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            background: #222;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            border-top: 1px solid #222;
+            padding: 80px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--text-gray);
+            margin-top: 20px;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1A1A1A;
+            color: #666;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">LF DESIGN</a>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Início</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#precos" class="nav-link">Preços</a>
+                <a href="#portfolio" class="nav-link">Portfólio</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            <div class="mobile-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-glow"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">
+                Soluções Profissionais em<br>
+                <span class="hero-highlight">Design Digital</span>
+            </h1>
+            <p class="hero-desc">
+                Transformamos sua visão em realidade digital. Web Design de alta performance, banners impactantes e publicidades que convertem.
+            </p>
+            <a href="#precos" class="cta-btn">Ver Planos</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Sobre a LF DESIGN</h2>
+                    <p>
+                        Somos uma agência digital focada em resultados e estética. Com anos de experiência no mercado, a LF DESIGN nasceu da necessidade de unir beleza funcional com estratégias de conversão.
+                    </p>
+                    <p>
+                        Nossa missão é elevar o nível da presença digital de empresas e profissionais autônomos, entregando projetos que não apenas impressionam visualmente, mas que também geram negócios reais. Valorizamos a transparência, a agilidade e a excelência em cada pixel.
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Anos de Experiência</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Projetos Entregues</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Clientes Satisfeitos</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Suporte Dedicado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <p class="section-subtitle">Soluções completas para sua presença online</p>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="ri-layout-masonry-line"></i>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Sites institucionais, landing pages e lojas virtuais desenvolvidos com as mais recentes tecnologias para garantir velocidade e responsividade.</p>
+                    <ul class="service-benefits">
+                        <li><i class="ri-check-line"></i> Design Responsivo</li>
+                        <li><i class="ri-check-line"></i> Otimização SEO</li>
+                        <li><i class="ri-check-line"></i> Alta Performance</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="ri-image-edit-line"></i>
+                    </div>
+                    <h3>Banners Digitais</h3>
+                    <p>Criação de artes visuais impactantes para redes sociais, e-mail marketing e displays digitais, focadas em atrair a atenção do seu público.</p>
+                    <ul class="service-benefits">
+                        <li><i class="ri-check-line"></i> Artes para Social Media</li>
+                        <li><i class="ri-check-line"></i> Banners para Sites</li>
+                        <li><i class="ri-check-line"></i> Identidade Visual</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="ri-megaphone-line"></i>
+                    </div>
+                    <h3>Publicidades</h3>
+                    <p>Gestão e criação de criativos para campanhas pagas (Ads). Maximize seu ROI com designs testados e aprovados para conversão.</p>
+                    <ul class="service-benefits">
+                        <li><i class="ri-check-line"></i> Google & Meta Ads</li>
+                        <li><i class="ri-check-line"></i> Copywriting Persuasivo</li>
+                        <li><i class="ri-check-line"></i> Testes A/B Visuais</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precos">
+        <div class="container">
+            <h2 class="section-title">Planos e Preços</h2>
+            <p class="section-subtitle">Investimento transparente para o crescimento do seu negócio</p>
+
+            <div class="pricing-main-grid">
+                
+                <!-- WEB DESIGN CARD -->
+                <div class="pricing-category-card">
+                    <div class="pricing-header">
+                        <i class="ri-computer-line pricing-icon"></i>
+                        <h3 class="pricing-title">Web Design</h3>
+                        <span class="pricing-range">R$ 300 - R$ 8.000</span>
+                    </div>
+                    <div class="tier-list">
+                        <!-- Tier 1 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Básico</div>
+                            <div class="tier-price">R$ 300</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> Landing Page Simples</div>
+                                <div><i class="ri-check-fill"></i> 1 Seção</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Web%20Design%20(Plano%20B%C3%A1sico)%20por%20R%24%20300." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                        <!-- Tier 2 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Padrão</div>
+                            <div class="tier-price">R$ 2.500</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> Site Institucional</div>
+                                <div><i class="ri-check-fill"></i> Até 5 Páginas</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Web%20Design%20(Plano%20Padr%C3%A3o)%20por%20R%24%202.500." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                        <!-- Tier 3 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Premium</div>
+                            <div class="tier-price">R$ 8.000</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> E-commerce Completo</div>
+                                <div><i class="ri-check-fill"></i> Painel Administrativo</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Web%20Design%20(Plano%20Premium)%20por%20R%24%208.000." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BANNERS CARD -->
+                <div class="pricing-category-card">
+                    <div class="pricing-header">
+                        <i class="ri-artboard-line pricing-icon"></i>
+                        <h3 class="pricing-title">Banners</h3>
+                        <span class="pricing-range">R$ 100 - R$ 650</span>
+                    </div>
+                    <div class="tier-list">
+                        <!-- Tier 1 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Básico</div>
+                            <div class="tier-price">R$ 100</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> 1 Arte Estática</div>
+                                <div><i class="ri-check-fill"></i> Formato Redes Sociais</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Banners%20(Plano%20B%C3%A1sico)%20por%20R%24%20100." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                        <!-- Tier 2 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Padrão</div>
+                            <div class="tier-price">R$ 350</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> Pacote 4 Artes</div>
+                                <div><i class="ri-check-fill"></i> Adaptação Stories</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Banners%20(Plano%20Padr%C3%A3o)%20por%20R%24%20350." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                        <!-- Tier 3 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Premium</div>
+                            <div class="tier-price">R$ 650</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> Identidade Completa</div>
+                                <div><i class="ri-check-fill"></i> 10 Artes + Editáveis</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Banners%20(Plano%20Premium)%20por%20R%24%20650." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUBLICIDADES CARD -->
+                <div class="pricing-category-card">
+                    <div class="pricing-header">
+                        <i class="ri-advertisement-line pricing-icon"></i>
+                        <h3 class="pricing-title">Publicidades</h3>
+                        <span class="pricing-range">R$ 400 - R$ 4.500</span>
+                    </div>
+                    <div class="tier-list">
+                        <!-- Tier 1 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Básico</div>
+                            <div class="tier-price">R$ 400</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> Setup Campanha Única</div>
+                                <div><i class="ri-check-fill"></i> 2 Criativos</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Publicidades%20(Plano%20B%C3%A1sico)%20por%20R%24%20400." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                        <!-- Tier 2 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Padrão</div>
+                            <div class="tier-price">R$ 2.000</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> Gestão Mensal (1 Rede)</div>
+                                <div><i class="ri-check-fill"></i> Relatórios Semanais</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Publicidades%20(Plano%20Padr%C3%A3o)%20por%20R%24%202.000." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                        <!-- Tier 3 -->
+                        <div class="tier-item">
+                            <div class="tier-name">Premium</div>
+                            <div class="tier-price">R$ 4.500</div>
+                            <div class="tier-features">
+                                <div><i class="ri-check-fill"></i> Gestão Multi-plataforma</div>
+                                <div><i class="ri-check-fill"></i> Produção de Criativos</div>
+                            </div>
+                            <a href="https://wa.me/5535998452519?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20servi%C3%A7o%20Publicidades%20(Plano%20Premium)%20por%20R%24%204.500." target="_blank" class="btn-whatsapp"><i class="ri-whatsapp-line"></i> CONTRATAR</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Nosso Portfólio</h2>
+            <p class="section-subtitle">Confira alguns de nossos trabalhos recentes</p>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active">Todos</button>
+                <button class="filter-btn">Web Design</button>
+                <button class="filter-btn">Banners</button>
+                <button class="filter-btn">Ads</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Item 1 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1467232004587-560cb0cd4995?q=80&w=1170&auto=format&fit=crop" alt="Web Design Project">
+                    <div class="project-overlay">
+                        <span class="project-cat">Web Design</span>
+                        <h3 class="project-title">TechStart Landing Page</h3>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799312c95d?q=80&w=1170&auto=format&fit=crop" alt="Banner Project">
+                    <div class="project-overlay">
+                        <span class="project-cat">Banners</span>
+                        <h3 class="project-title">Campanha Black Friday</h3>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1170&auto=format&fit=crop" alt="Ads Project">
+                    <div class="project-overlay">
+                        <span class="project-cat">Ads</span>
+                        <h3 class="project-title">Dashboard Financeiro</h3>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1170&auto=format&fit=crop" alt="Web Design Project">
+                    <div class="project-overlay">
+                        <span class="project-cat">Web Design</span>
+                        <h3 class="project-title">E-commerce Moda</h3>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1074&auto=format&fit=crop" alt="Banner Project">
+                    <div class="project-overlay">
+                        <span class="project-cat">Banners</span>
+                        <h3 class="project-title">Social Media Pack</h3>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop" alt="Ads Project">
+                    <div class="project-overlay">
+                        <span class="project-cat">Ads</span>
+                        <h3 class="project-title">Consultoria Corp</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O que dizem nossos clientes</h2>
+            <div class="testimonials-grid" style="margin-top: 50px;">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">"A LF DESIGN transformou completamente a imagem da minha empresa. O site ficou incrível e as vendas aumentaram 40% no primeiro mês."</p>
+                    <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1170&auto=format&fit=crop" alt="Client 1" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Carlos Silva</h4>
+                            <span>CEO, TechSolutions</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">"Profissionalismo nota 10. As artes para as redes sociais ficaram lindas e super alinhadas com a nossa marca. Recomendo!"</p>
+                    <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop" alt="Client 2" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Amanda Souza</h4>
+                            <span>Marketing, Loja Viver</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote-text">"Excelente gestão de tráfego. O retorno sobre o investimento foi muito rápido. Equipe atenciosa e competente."</p>
+                    <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1170&auto=format&fit=crop" alt="Client 3" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Roberto Mendes</h4>
+                            <span>Diretor, Grupo Alpha</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <p class="section-subtitle">Tire suas dúvidas sobre nossos serviços</p>
+
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-summary">Quais são as formas de pagamento aceitas?</summary>
+                    <div class="faq-content">
+                        Aceitamos pagamentos via PIX, transferência bancária e cartão de crédito em até 12x (com juros da operadora). Para projetos maiores, oferecemos condições de parcelamento direto.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-summary">Qual o prazo médio de entrega de um site?</summary>
+                    <div class="faq-content">
+                        O prazo varia de acordo com a complexidade do projeto. Landing Pages levam em média 5 a 7 dias úteis, enquanto sites institucionais completos podem levar de 15 a 20 dias úteis após o recebimento de todo o material.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-summary">Vocês oferecem suporte após a entrega?</summary>
+                    <div class="faq-content">
+                        Sim! Todos os nossos projetos de Web Design incluem 30 dias de suporte gratuito para correções de bugs e pequenas alterações. Também oferecemos planos de manutenção mensal.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-summary">Posso solicitar alterações no design?</summary>
+                    <div class="faq-content">
+                        Claro. Em todos os planos incluímos rodadas de revisão (a quantidade varia conforme o plano contratado) para garantir que o resultado final esteja exatamente como você imaginou.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-summary">Vocês fazem projetos personalizados?</summary>
+                    <div class="faq-content">
+                        Sim, desenvolvemos soluções sob medida. Se sua necessidade não se encaixa nos pacotes padrão, entre em contato para um orçamento personalizado.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-summary">Como funciona o serviço de Publicidades?</summary>
+                    <div class="faq-content">
+                        Iniciamos com um briefing para entender seu público e objetivos. Em seguida, criamos a estratégia, produzimos os criativos e configuramos as campanhas nas plataformas escolhidas (Google, Meta, etc.).
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle">Estamos prontos para iniciar seu projeto</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-form-box">
+                    <form>
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" class="form-control" placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone / WhatsApp</label>
+                            <input type="text" class="form-control" placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Interesse</label>
+                            <select class="form-control">
+                                <option>Web Design</option>
+                                <option>Banners</option>
+                                <option>Publicidades</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Mensagem</label>
+                            <textarea class="form-control" rows="4" placeholder="Conte-nos sobre seu projeto"></textarea>
+                        </div>
+                        <button type="button" class="submit-btn">ENVIAR MENSAGEM</button>
+                    </form>
+                </div>
+                <div class="contact-info-box">
+                    <div>
+                        <h3 style="color: white; margin-bottom: 30px; font-size: 24px;">Informações de Contato</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-icon"><i class="ri-mail-send-line"></i></div>
+                            <div class="info-text">
+                                <h5>E-mail</h5>
+                                <a href="mailto:contato@lfdesign.com">contato@lfdesign.com</a>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="ri-whatsapp-line"></i></div>
+                            <div class="info-text">
+                                <h5>WhatsApp</h5>
+                                <a href="https://wa.me/5535998452519" target="_blank">(35) 99845-2519</a>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="ri-map-pin-line"></i></div>
+                            <div class="info-text">
+                                <h5>Localização</h5>
+                                <p>Atendimento Global<br>Base em Minas Gerais, Brasil</p>
+                            </div>
+                        </div>
+
+                        <!-- Map Placeholder -->
+                        <div style="width: 100%; height: 200px; background: #222; border-radius: 10px; margin-top: 20px; display: flex; align-items: center; justify-content: center; color: #555;">
+                            <i class="ri-map-2-line" style="font-size: 40px;"></i>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="ri-instagram-line"></i></a>
+                        <a href="#" class="social-btn"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" class="social-btn"><i class="ri-linkedin-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">LF DESIGN</a>
+                    <p>Transformando ideias em experiências digitais memoráveis. Design, tecnologia e estratégia para o seu negócio decolar.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Início</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#precos">Web Design</a></li>
+                        <li><a href="#precos">Identidade Visual</a></li>
+                        <li><a href="#precos">Tráfego Pago</a></li>
+                        <li><a href="#precos">Social Media</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 LF DESIGN. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
